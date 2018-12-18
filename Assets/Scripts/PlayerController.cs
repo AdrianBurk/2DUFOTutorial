@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Text countText;
     public Text winText;
     private Rigidbody2D rb2d;
+    private SceneManager sceneManager;
     private int count;
     
 	// Use this for initialization
@@ -38,6 +40,10 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
+        }
+        if(other.gameObject.CompareTag("Hazard"))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
